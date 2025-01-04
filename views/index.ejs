@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
-</head>
-<body>
-    <h1>Hi there</h1>
-</body>
+  </head>
+  <body>
+    <!-- Country drop down select -->
+     <form action="/" method="post">
+
+         <select name="country" id="country">
+           <% data.forEach((item) => { %>
+           <option value="<%=item.name%>"><%=item.name%></option>
+           <% }) %>
+         </select>
+         <button type="submit">Submit Test</button>
+     </form>
+
+  </body>
 </html>
