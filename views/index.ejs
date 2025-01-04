@@ -7,15 +7,31 @@
   </head>
   <body>
     <!-- Country drop down select -->
-     <form action="/" method="post">
+    <form action="/" method="post">
+      <select name="country" id="country">
 
-         <select name="country" id="country">
-           <% data.forEach((item) => { %>
-           <option value="<%=item.name%>"><%=item.name%></option>
-           <% }) %>
-         </select>
-         <button type="submit">Submit Test</button>
-     </form>
+        <% data.forEach((item) => { %>   <!-- loop through each item in the data (array) and list it in the drop down -->
+            <option value="<%=item.name%>"><%=item.name%></option>
+          <% }) %>
+        </select>
+      <button type="submit">Submit</button>
+    </form>
+
+    
+<!-- Cities drop down select -->
+<form action="/uv" method="post">
+  <select name="cities" id="cities">
+    <%    if (locals.cities) { %>  <!-- check if the cities exist then put all the cities in the drop down -->
+      <% cities.forEach((item) => { %>
+      <option value="<%=JSON.stringify(item)%>"><%=item.name%></option>
+      <% }) %>
+<%} else { %>
+  <p> error </p>
+<%}%>
+  </select>
+  <button type="submit">Submit</button>
+</form>
+
 
   </body>
 </html>
