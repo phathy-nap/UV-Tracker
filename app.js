@@ -6,7 +6,7 @@ const port = 3000;
 const apiURL = "https://api.openuv.io/api/v1/uv/";
 const config = {
   headers: {
-    "x-access-token": "openuv-24ehrm5gi59ab-io",
+    "x-access-token": "apiKey",
   },
 };
 app.use(express.static("public"));
@@ -30,8 +30,8 @@ app.post("/uv", async (req, res) => {
   const lat = stateData.latitude;
   const lon = stateData.longitude;
   const response = await axios.get(`${apiURL}?lat=${lat}&lng=${lon}`, config);
-  console.log(response.data);
-  res.send(req.body.cities);
+  console.log(response.data.result.uv);
+  res.send("UV index for your localtion is: "+response.data.result.uv);
 });
 
 app.listen(port, () => {
